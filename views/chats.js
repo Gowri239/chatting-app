@@ -9,16 +9,18 @@ send.addEventListener('submit',sendmessage)
 
 async function loadScreen(e){
     e.preventDefault();
-    try{
-        const response = await axios.get("http://localhost:3000/chats/getMessages",{headers:{"Authorization":token}})
-        console.log(response.data.data)
-        showChats(response.data.data)
-        const res = await axios.get("http://localhost:3000/user/getusers",{headers:{"Authorization":token}})
-        showPeople(res.data.data)
-    }
-    catch(err){
-        console.log(err)
-    }
+    setInterval(async ()=>{
+        try{
+            const response = await axios.get("http://localhost:3000/chats/getMessages",{headers:{"Authorization":token}})
+            console.log(response.data.data)
+            showChats(response.data.data)
+            const res = await axios.get("http://localhost:3000/user/getusers",{headers:{"Authorization":token}})
+            showPeople(res.data.data)
+        }
+        catch(err){
+            console.log(err)
+        }
+    },1000)
 }
 
 function showPeople(users){
