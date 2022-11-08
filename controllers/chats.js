@@ -17,11 +17,18 @@ const sendMessage = async (req,res,next) =>{
 }
 
 const getMessages = async(req,res,next) =>{
+    let msgId = req.query.msg;
+    console.log(msgId)
     try{
-        console.log("234")
+        
         const messages = await Chats.findAll()
-        res.status(200).json({data:messages,success:true})
-
+        let index = messages.findIndex(msg => msg.id == msgId)
+        
+        console.log("567",index)
+        let messagesToSend = messages.slice(index+1)
+        console.log(messagesToSend.length)
+        res.status(200).json({data:messagesToSend,success:true})
+        
     }
     catch{
         res.status(500).json({error:err,success:false})
