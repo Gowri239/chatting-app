@@ -5,7 +5,6 @@ form.addEventListener('submit' , signup)
 
 async function signup(e){
     e.preventDefault()
-    errorDiv.innerHTML =''
     try{
         const signupDetails ={
         name: e.target.name.value,
@@ -14,17 +13,17 @@ async function signup(e){
         password: e.target.password.value
        }
 
-        const response = await axios.post("http://localhost:3000/user/signup",signupDetails)
+        const response = await axios.post("http://54.173.238.58:5000/user/signup",signupDetails)
         if(response.status === 201){
            alert(response.data.message)
-           window.location.href="../login/login.html"
+           window.location.href="login.html"
         }else{
            throw new Error("Failed to login")
         }
 
     }
     catch(err){
-        errorDiv.innerHTML += `<div style="color:red;red;text-align:center;padding:10px;margin-bottom:-30px">${err}</div>`
+        errorDiv.innerHTML += `${err.response.data.message}`
     }
     
 }

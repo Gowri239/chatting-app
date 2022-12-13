@@ -40,7 +40,7 @@ const signup = async (req,res) => {
  }
 
  function generateAccessToken(id){
-    return jwt.sign({userId: id},'09f26e402586e2faa8da4c98a35f1b20d6b033c6097befa8be3486a829587fe2f90a832bd3ff9d42710a4da095a2ce285b009f0c3730cd9b8e1af3eb84df6611')
+    return jwt.sign({userId: id},process.env.TOKEN_SECRET)
  }
 
  const login = async(req,res) => {
@@ -55,7 +55,7 @@ const signup = async (req,res) => {
         if(user.length>0){
             bcrypt.compare(password,user[0].password,(req,result) => {
                 if(result === true){
-                    res.status(200).json({message: "user login successful",success:true,user:user,token: generateAccessToken(user[0].id)})
+                    res.status(200).json({message: "user login successful",success:true,userid:user[0].id,username:user[0].name,token: generateAccessToken(user[0].id)})
                 }else{
                 res.status(401).json({message: "user not authorized",success:false})
                 }
@@ -72,5 +72,16 @@ const signup = async (req,res) => {
 
 }
 
+const getUsers = async(req,res,next) =>{
+    try{
+        const users = await User.findAll()
+        // console.log(users)
+        res.status(200).json({data:users,success:true})
+    }
+    catch(err){
+        res.status(500).json({message:err,success:false})
+    }
+}
 
- module.exports = {signup,login}
+
+ module.exports = {signup,login,getUsers}

@@ -3,7 +3,6 @@ const errorDiv = document.getElementById('error')
 
 
 form.addEventListener('submit' , login)
-forgetPass.addEventListener('click' , forgetPassword)
 
 async function login(e){
     e.preventDefault()
@@ -12,21 +11,17 @@ async function login(e){
         email: e.target.email.value,
         password: e.target.password.value
     }
-    const response = await axios.post("http://localhost:3000/user/login",loginDetails)
+    const response = await axios.post("http://54.173.238.58:5000/user/login",loginDetails)
     if(response.status === 200){
         alert(response.data.message)
         localStorage.setItem('token',response.data.token)
+        localStorage.setItem('user-id',response.data.userid)
+        localStorage.setItem('username',response.data.username)
+        window.location.href = "group.html"
     }
     } 
     catch(err){
-       if(err.response.status === 401){
-        alert(err.response.data.message)
-       }
-       if(err.response.status === 404){
-        alert(err.response.data.message)
-       }
-
-       console.log(err)
+        errorDiv.innerHTML = `${err.response.data.message}`
 
     }
 

@@ -1,64 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatting app</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="chats.css">
-    <script src="chats.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="chats.css">
+  <title>Chat App</title>
 </head>
 <body>
-    <main>
-        <header>
-            <div class="title">
-                <h1>Chat app</h1>
-            </div>
-        </header>
-        <div class="container">
-            <div class="users-window">
-                <div class="users-head">
-                    <h3>People</h3>
-                </div>
-                <div class="users-list">
-                    <p>Gowri</p>
-                    <p>Krishna</p>
-                    <p>Asmi</p>
-                </div>
-            </div>
-            <div class="chat-window">
-                <div class="chats">
-                    <div class="user-join">
-                        <p><b>Gowri</b>Joined the chat</p>
-                    </div>
-                    <div class="user-join">
-                        <p><b>Asmi</b>Joined the chat</p>
-                    </div>
-                    <!-- <div class="message-incoming">
-                        <h5>Asmi</h5>
-                        <p>Hello</p>
-                    </div>
-                    <div class="message-outgoing">
-                        <h5>Gowri</h5>
-                        <p>Welcome Asmi</p>
-                    </div>
-                    <div class="message-incoming">
-                        <h5>Asmi</h5>
-                        <p>Thank you:)</p>
-                    </div> -->
-                </div>
-                <form id="send-message">
-                    <div class="user-input">
-                        <input type="text" name="message" placeholder="Type your message...">
-                        <button type="submit">SEND</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </main> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+  <div class="chat-container">
+    <header class="chat-header">
+      <h1><i class="fas fa-smile"></i> Chat App</h1>
+      <div class ='create-group'  id="add-user">
+        <form id="form-group">
+          <div >
+            <input type="email" name="email" class="groupName" placeholder="search by email" style="padding: 10px 10px;font:bold;">
+            <input type="submit" value="ADD" class="add-btn"  style="padding: 10px 10px;color: #2791cf;font:bold;font-size: 15px;">
+          </div>
+        </form>
+      </div>
+    </header>
+    <main class="chat-main">
+      <div class="chat-sidebar">
+        <h3><i class="fas fa-comments"></i> Group Name:</h3>
+        <h2 id="group-name"></h2>
+        <h3><i class="fas fa-users"></i> Users</h3>
+        <ul id="users">
+        </ul>
+      </div>
+      <div class="chat-messages">
+      </div>
+    </main>
+    <div class="chat-form-container">
+      <form id="chat-form">
+        <input
+          id="msg"
+          type="text"
+          name="message"
+          placeholder="Enter Message"
+          required
+          autocomplete="off"
+        />
+        <input type="file" id="file" name="file" style="display: none;">
+        <label id="uploadFile" for="file"><i class="fas fa-file-upload"></i></label>
+        <button type ="submit" class="btn" style="color: #2791cf;"> Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="chats.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
 </body>
 </html>
