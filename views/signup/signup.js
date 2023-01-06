@@ -16,7 +16,7 @@ async function signup(e){
         const response = await axios.post("http://54.173.238.58:5000/user/signup",signupDetails)
         if(response.status === 201){
            alert(response.data.message)
-           window.location.href="login.html"
+           window.location.href="../login/login.html"
         }else{
            throw new Error("Failed to login")
         }

@@ -42,7 +42,7 @@ function openGroup(groupId,groupname){
     console.log(groupname)
     localStorage.setItem('groupId' , groupId)
     localStorage.setItem('groupName' , groupname)
-    window.location.href = 'chats.html'
+    window.location.href = '../chats/chats.html'
 }
 
 form.addEventListener('submit' , async(e)=>{
@@ -65,5 +65,5 @@ form.addEventListener('submit' , async(e)=>{
 document.getElementById('logout').onclick = function(e){
     e.preventDefault();
     localStorage.removeItem('userToken')
-    window.location.href = 'login.html'
+    window.location.href = '../login/login.html'
 }

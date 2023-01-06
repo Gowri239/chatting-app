@@ -2,7 +2,7 @@ const Group = require('../models/groups');
 const User = require('../models/users')
 const Usergroup = require('../models/usergroup') 
 
-exports.getGroups = async(req,res,next)=>{
+exports.getGroups = async(req,res)=>{
     
     try {
         // let data = await req.user.getGroups()
@@ -22,7 +22,7 @@ exports.getGroups = async(req,res,next)=>{
     }
 }
 
-exports.createGroup = async(req,res,next)=>{
+exports.createGroup = async(req,res)=>{
     const{group} = req.body ;
     try {
         if(!group){

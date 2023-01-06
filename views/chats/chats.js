@@ -1,4 +1,3 @@
-
 let token = localStorage.getItem('token')
 let user_id = localStorage.getItem('user-id')
 let user_name = localStorage.getItem('username')
@@ -20,9 +19,9 @@ async function loadScreen(e){
     e.preventDefault();
     document.getElementById('group-name').innerHTML = groupName
 
-        isAdmin(groupId)
-        getMessage(groupId)
-        getUsers(groupId);
+    isAdmin(groupId)
+    getMessage(groupId)
+    getUsers(groupId);
     
 }
 
@@ -41,7 +40,7 @@ async function isAdmin(groupId){
 }
 
 async function getMessage(groupId){
-    setInterval(async ()=>{
+    // setInterval(async ()=>{
         const messages = JSON.parse(localStorage.getItem(`msg${groupId}`))
         if(messages == undefined || messages.length == 0){
             lastId = 0
@@ -63,7 +62,7 @@ async function getMessage(groupId){
             console.log(err)
         }
 
-    },1000)
+    // },1000)
     
 
 }
@@ -181,8 +180,8 @@ function addGroupUsersToScreen(user){
 
 function addGroupUsersToScreenNotAdmin(user){
         let child = `<li id=${user.id}>
-        ${user.name}
-        </li>`
+                     ${user.name}
+                     </li>`
         
         usersContainer.innerHTML += child
 

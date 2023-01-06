@@ -17,7 +17,7 @@ async function login(e){
         localStorage.setItem('token',response.data.token)
         localStorage.setItem('user-id',response.data.userid)
         localStorage.setItem('username',response.data.username)
-        window.location.href = "group.html"
+        window.location.href = "../groups/group.html"
     }
     } 
     catch(err){
